@@ -29,5 +29,4 @@ Each cell is either **alive (1)** or **dead (0)**:
 
 ---
 
-## 🗂️ Project Structure
 
