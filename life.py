@@ -1,7 +1,5 @@
 import random
 import os
-import time
-import msvcrt
 import copy
 os.system("cls")
 
@@ -197,38 +195,19 @@ def next_board_state(init_state):
                     
     return init_state
 
+def load_pattern(filepath):
+    pattern = []
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            row = []
+            for ch in line.strip():
+                row.append(1 if ch == "#" else 0)
+            pattern.append(row)
+    return pattern
 
-if __name__ == "__main__":
-    initial_state = [
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        ]
-    
-    board = initial_state
-    while True:
-        os.system("cls")
-        board = next_board_state(board)
-        render(board)
-        
-        time.sleep(0.4)
-        
-        if msvcrt.kbhit():
-            key = msvcrt.getch()
-            if key == b'q':
-                print("Goodbye 🖐🏾")
-                break
-    
-  
-
-        
-        
-        
+def place_pattern(board, pattern, start_x, start_y):
+    for y, row in enumerate(pattern):
+        for x, cell in enumerate(row):
+            if cell == 1:
+                board[start_y + y][start_x + x] = 1
+    return board

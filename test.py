@@ -48,5 +48,8 @@ else:
     print (expected_next_state2)
     print ("Actual:")
     print (actual_next_state2)
+
+for x in (1, 2, 3):
+    print(x)
     
     
