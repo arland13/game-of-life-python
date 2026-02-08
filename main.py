@@ -6,6 +6,7 @@ import os
 
 if __name__ == "__main__":
     while True:
+        os.system("cls")
         print("choose patterns:")
         print("1. Pattern with customize width and height (random alive cell)")
         print("2. Fixed patterns")
@@ -14,6 +15,7 @@ if __name__ == "__main__":
         command = input("input command: ")
 
         if command == "1":
+            os.system("cls")
             try:
                 width = int(input("input width of the state: "))
                 height = int(input("input height of the state: "))
@@ -37,10 +39,14 @@ if __name__ == "__main__":
                         print("Loop is stopped")
                         break
 
-            print("\nInitial state:")
-            render(initial_state)
+            while True:
+                print("\nInitial state:")
+                render(initial_state)
+                input("press ENTER to back to main command")
+                break
 
         elif command == "2":
+            os.system("cls")
             print("1. pulsar")
             print("2. gospel glider gun")
             print("3. around the world")
@@ -67,8 +73,11 @@ if __name__ == "__main__":
                         if key == b' ':
                             print("Loop is stopped")
                             break
-                print("\nInitial state:")
-                render(initial_state)
+                while True:
+                    print("\n'Pulsar' Initial state:")
+                    render(initial_state)
+                    input("press ENTER to back to main command ")
+                    break
                 
             elif choose == "2":
                 
@@ -91,9 +100,11 @@ if __name__ == "__main__":
                         if key == b' ':
                             print("Loop is stopped")
                             break
-
-                print("\nInitial state:")
-                render(initial_state)
+                while True:
+                    print("\n'Gospel glider gun' Initial state:")
+                    render(initial_state)
+                    input("press ENTER to back to main command")
+                    break
             
             elif choose == "3":
                 
@@ -116,10 +127,11 @@ if __name__ == "__main__":
                         if key == b' ':
                             print("Loop is stopped")
                             break
-
-                print("\nInitial state:")
-                render(initial_state)
-
+                while True:
+                    print("\n'Around the world' Initial state:")
+                    render(initial_state)
+                    input("press ENTER to back to main command")
+                    break
         
         elif command == "3":
             print("Goodbye 🖐🏾🖐🏾")
